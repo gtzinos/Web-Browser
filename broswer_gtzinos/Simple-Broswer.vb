@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Public Class Form1
-    Dim path As String = "c:\temp\MyTest.txt"
+    Dim path As String = "c:\temp.txt"
 
     Private Sub go_button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles go_button.Click
         broswer.Navigate(url_textbox.Text)
@@ -10,8 +10,6 @@ Public Class Form1
     Private Sub home_button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles home_button.Click
         broswer.Navigate("http://aetos.it.teithe.gr/~gtzinos")
         url_textbox.Text = "http://aetos.it.teithe.gr/~gtzinos"
-
-
     End Sub
 
     Private Sub refresh_button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles refresh_button.Click
@@ -33,7 +31,6 @@ Public Class Form1
         If (broswer.CanGoForward) Then
             forward_button.Enabled = True
         Else
-
             forward_button.Enabled = False
         End If
     End Sub
@@ -59,16 +56,37 @@ Public Class Form1
     End Sub
 
     Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
+        ' Create a file to write to.
+        Using sw As StreamWriter = File.CreateText(path)
+            sw.WriteLine(notes.Text)
+            sw.Flush()
+        End Using
+    End Sub
 
-        If File.Exists(path) = False Then
-            ' Create a file to write to.
-            Using sw As StreamWriter = File.CreateText(path)
-                sw.WriteLine("Hello")
-                sw.WriteLine("And")
-                sw.WriteLine("Welcome")
-                sw.Flush()
-            End Using
-        End If
+    Private Sub OpenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenToolStripMenuItem.Click
+        openfile.ShowDialog()
+        path = openfile.FileName
+        ' Open the file to read from.
+        Using sr As StreamReader = File.OpenText(path)
+            Do While sr.Peek() >= 0
+                notes.AppendText(sr.ReadToEnd)
+            Loop
+        End Using
+    End Sub
 
+    Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
+        notes.Cut()
+    End Sub
+
+    Private Sub CopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CopyToolStripMenuItem.Click
+        notes.Copy()
+    End Sub
+
+    Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
+        notes.Paste()
+    End Sub
+
+    Private Sub UndoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UndoToolStripMenuItem.Click
+        notes.Undo()
     End Sub
 End Class
