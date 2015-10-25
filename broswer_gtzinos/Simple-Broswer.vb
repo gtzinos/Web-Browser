@@ -22,17 +22,6 @@ Public Class Form1
 
     Private Sub broswer_ProgressChanged(ByVal sender As System.Object, ByVal e As System.Windows.Forms.WebBrowserProgressChangedEventArgs) Handles broswer.ProgressChanged
         progress.Value = e.CurrentProgress
-        If (broswer.CanGoBack) Then
-            back_button.Enabled = True
-        Else
-            back_button.Enabled = False
-        End If
-
-        If (broswer.CanGoForward) Then
-            forward_button.Enabled = True
-        Else
-            forward_button.Enabled = False
-        End If
     End Sub
 
     Private Sub forward_button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles forward_button.Click
@@ -126,5 +115,59 @@ Public Class Form1
             MsgBox("Cannot close your file.Something going wrong : " & vbCrLf & ex.Message)
         End Try
         
+    End Sub
+
+    Private Sub broswer_Navigated(ByVal sender As System.Object, ByVal e As System.Windows.Forms.WebBrowserNavigatedEventArgs) Handles broswer.Navigated
+        If (broswer.CanGoBack) Then
+            back_button.Enabled = True
+        Else
+            back_button.Enabled = False
+        End If
+
+        If (broswer.CanGoForward) Then
+            forward_button.Enabled = True
+        Else
+            forward_button.Enabled = False
+        End If
+    End Sub
+
+    Private Sub WingdingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WingdingsToolStripMenuItem.Click
+        notes.Font = New Drawing.Font("Times New Roman", notes.Font.Size, notes.Font.Style)
+    End Sub
+
+    Private Sub RegularToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegularToolStripMenuItem.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, notes.Font.Size, FontStyle.Regular)
+    End Sub
+
+    Private Sub BoldToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BoldToolStripMenuItem.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, notes.Font.Size, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 10, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem3.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 12, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem4.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 14, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem5.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 16, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem6.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 18, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem7.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 24, FontStyle.Bold)
+    End Sub
+
+    Private Sub ToolStripMenuItem8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem8.Click
+        notes.Font = New Drawing.Font(notes.Font.FontFamily, 36, FontStyle.Bold)
     End Sub
 End Class
