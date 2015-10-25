@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 
 Public Class Form1
-    Dim path As String = "c:\temp.txt"
+    Dim path As String = ""
 
     Private Sub go_button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles go_button.Click
         broswer.Navigate(url_textbox.Text)
@@ -55,26 +55,47 @@ Public Class Form1
 
     End Sub
 
-    Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click
+    Private Sub SaveToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripMenuItem.Click, tool_save.Click
         ' Create a file to write to.
-        Using sw As StreamWriter = File.CreateText(path)
-            sw.WriteLine(notes.Text)
-            sw.Flush()
-        End Using
+        Try
+            If (path = "") Then
+                openfile.ShowDialog()
+                path = openfile.FileName
+            End If
+
+            Using sw As StreamWriter = File.CreateText(path)
+                sw.WriteLine(notes.Text)
+                sw.Flush()
+            End Using
+        Catch ex As Exception
+            MsgBox("Cannot save your file.Something going wrong : " & vbCrLf & ex.Message)
+        End Try
+
     End Sub
 
-    Private Sub OpenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenToolStripMenuItem.Click
-        openfile.ShowDialog()
-        path = openfile.FileName
-        ' Open the file to read from.
-        Using sr As StreamReader = File.OpenText(path)
-            Do While sr.Peek() >= 0
-                notes.AppendText(sr.ReadToEnd)
-            Loop
-        End Using
+    Private Sub OpenToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OpenToolStripMenuItem.Click, tool_open.Click, tool_new.Click
+        Try
+            Dim warningFile As Integer
+            If (path Is "" = False Or notes.Text Is "" = False) Then
+                warningFile = MessageBox.Show("You have some notes. Are you sure ?", "Warning <Open File>", MessageBoxButtons.YesNoCancel)
+            End If
+
+            If (warningFile = DialogResult.Yes Or notes.Text Is "" = True) Then
+                openfile.ShowDialog()
+                path = openfile.FileName
+                ' Open the file to read from.
+                Using sr As StreamReader = File.OpenText(path)
+                    Do While sr.Peek() >= 0
+                        notes.Text = sr.ReadToEnd
+                    Loop
+                End Using
+            End If
+        Catch ex As Exception
+            MsgBox("Cannot open your file.Something going wrong : " & vbCrLf & ex.Message)
+        End Try
     End Sub
 
-    Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click
+    Private Sub CutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutToolStripMenuItem.Click, tool_cut.Click
         notes.Cut()
     End Sub
 
@@ -82,11 +103,28 @@ Public Class Form1
         notes.Copy()
     End Sub
 
-    Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click
+    Private Sub PasteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PasteToolStripMenuItem.Click, tool_paste.Click
         notes.Paste()
     End Sub
 
     Private Sub UndoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UndoToolStripMenuItem.Click
         notes.Undo()
+    End Sub
+
+    Private Sub CloseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripMenuItem.Click
+        Try
+            Dim warningFile As Integer
+            If (path Is "" = False) Then
+                warningFile = MessageBox.Show("You have an opened file. Are you sure ?", "Warning <Close File>", MessageBoxButtons.YesNoCancel)
+            End If
+
+            If (warningFile = DialogResult.Yes Or notes.Text Is Nothing = True) Then
+                path = ""
+                notes.Text = ""
+            End If
+        Catch ex As Exception
+            MsgBox("Cannot close your file.Something going wrong : " & vbCrLf & ex.Message)
+        End Try
+        
     End Sub
 End Class
