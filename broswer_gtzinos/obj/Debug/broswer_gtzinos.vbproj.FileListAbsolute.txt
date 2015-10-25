@@ -1,0 +1,10 @@
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\bin\Debug\broswer_gtzinos.exe
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\bin\Debug\broswer_gtzinos.pdb
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\bin\Debug\broswer_gtzinos.xml
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\broswer_gtzinos.Form1.resources
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\broswer_gtzinos.Resources.resources
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\broswer_gtzinos.vbproj.GenerateResource.Cache
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\broswer_gtzinos.exe
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\broswer_gtzinos.xml
+C:\Users\George\Dropbox\olo t stick\TEI\eksamino 7\ADOPSE\ERGASTIRIO\Ergastirio 3\Askisi 1\broswer_gtzinos\broswer_gtzinos\obj\Debug\broswer_gtzinos.pdb
